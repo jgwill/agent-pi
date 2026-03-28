@@ -143,7 +143,51 @@ ceremony-pipeline:
 * ❌ **Volume Celebration**: Treating line count or artifact count as evidence of success
 * ❌ **Skipping the Keeper**: Chains that omit wisdom-keeper "to save time" — this breaks the circle
 
-## 7. Relation to Governor / Relational Value Advisor
+## 7. Veritas Integration — MMOT as Formal Engine
+
+The wisdom-keeper's MMOT evaluation is not ad-hoc — it is powered by **Veritas** (`p/veritas`), the TandT Performance Review system. Veritas provides:
+
+### What Veritas Gives the Wisdom Keeper
+
+| Veritas Capability | How Wisdom Keeper Uses It |
+|---|---|
+| **Type 2 Performance Review Model** | Each PDE intent becomes an element. State (acceptable/unacceptable) × Trend (improving/stable/declining) evaluated per intent. |
+| **Priority Matrix** | Automatic prioritization: Critical (unacceptable+declining) → Warning (unacceptable+stable) → Monitor → Success. The seed document carries these priorities forward. |
+| **Four-Step MMOT Cycle** | Acknowledge → Analyze → Plan → Document. Formalized, not improvised. |
+| **Bootstrap Paradox** | First evaluation of a new pipeline pattern is demonstration, not trusted verdict. The system learns what to evaluate. |
+| **MCP Tools** | `veritas_generate_model`, `veritas_mmot_evaluate`, `veritas_get_model` — callable from the agent chain via mcporter or MCP bridge. |
+
+### The Two Layers
+
+Veritas provides the **DESIGN/EXECUTION evaluation framework** — the formal State × Trend × Priority matrix. The wisdom-keeper adds the **relational accountability layer** on top — asking whether the work served relationships or produced volume. These are complementary:
+
+```
+Veritas MMOT (formal):
+  Element: "Running Wolf academic survey"
+  State: Acceptable (produced, 338 lines, 30+ sources)
+  Trend: Stable
+  Priority: Success ✅
+
+Relational Layer (wisdom-keeper adds):
+  But: "The survey was produced ABOUT Running Wolf without
+  his knowledge or participation. Wilson alignment: 35-40%.
+  Structurally extractive despite acceptable output quality."
+  Relational Priority: 🔴 Critical
+```
+
+The Veritas score and the relational score may diverge. **That divergence IS the insight.**
+
+### Veritas rispecs Reference
+
+Full Veritas specification suite: `veritas.rispecs/`
+- `performance_review_model.spec.md` — State × Trend evaluation, priority matrix
+- `mmot_generation.spec.md` — Autonomous MMOT workflow (Generate → Review → Evaluate → Iterate → Present)
+- `mcp_server.spec.md` — 9 MCP tools for programmatic access
+- `cli_tool.spec.md` — `veritas mmot evaluate` from terminal
+
+---
+
+## 8. Relation to Governor / Relational Value Advisor
 
 The wisdom-keeper performs post-hoc reflection. A separate component — the **Relational Value Advisor** (Kinship Hub Advisory Mode) — would perform in-flight monitoring during the Active Ceremony phase (agent delegation). These are complementary:
 
