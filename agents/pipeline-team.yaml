@@ -1,13 +1,19 @@
 plan-build-review:
-  description: "Plan, implement, and review — the standard development cycle"
+  description: "Decompose, plan, implement, and review — the standard development cycle"
   review_max_loops: 3
   phases:
+    - name: decompose
+      description: "Decompose the task using PDE — identify intents, directions, and ambiguities"
+      mode: interactive
+      agents:
+        - role: planner
+          task_template: "Decompose this task into primary/secondary intents using the PDE methodology. Write the decomposition to .pde/<timestamp>--<uuid>/decomposition.md. Evaluate using the four question types (Information, Clarification, Implication, Discrepancy). If genuine ambiguities exist, present interactively via show_plan in questions mode. Task: $INPUT"
     - name: understand
       description: "Clarify the task and gather context"
       mode: interactive
       agents:
         - role: scout
-          task_template: "Explore the codebase and clarify the task. Summarize what needs to be done."
+          task_template: "Read the PDE decomposition in .pde/ if it exists, then explore the codebase and clarify the task. Scout specifically for the decomposed intents. Summarize what needs to be done."
     - name: plan
       description: "Create an implementation plan"
       mode: interactive

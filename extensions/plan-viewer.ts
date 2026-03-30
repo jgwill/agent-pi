@@ -187,7 +187,7 @@ function openBrowser(url: string): void {
 // ── Tool Parameters ──────────────────────────────────────────────────
 
 const ShowPlanParams = Type.Object({
-	file_path: Type.String({ description: "Path to the markdown plan file (e.g. .context/todo.md)" }),
+	file_path: Type.String({ description: "Path to the markdown plan file (e.g. .pde/<workspace>/plan.md or .context/todo.md)" }),
 	title: Type.Optional(Type.String({ description: "Title to display in the viewer header" })),
 	mode: Type.Optional(Type.String({ description: "Viewer mode: 'plan' (default) for plan review/approval, or 'questions' for follow-up questions with inline answers" })),
 });
