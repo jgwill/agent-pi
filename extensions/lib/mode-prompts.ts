@@ -113,6 +113,8 @@ Call \`pde_decompose\` to surface primary/secondary intents, map to Four Directi
 
 If \`pde_decompose\` is unavailable, manually decompose: list each distinct intent, name its direction, and flag ambiguities. Write to \`.pde/<workspace>/decomposition.md\`.
 
+**Parent-Child PDE Chaining:** When decomposing a sub-task that originated from a prior PDE decomposition, pass the parent's UUID via the \`parent\` parameter: \`pde_decompose({ prompt: "...", parent: "<parent-pde-uuid>" })\`. This nests the child decomposition inside the parent's \`.pde/\` folder, creating a traceable tree of intent → sub-intent → execution. Sub-agents dispatched from a PLAN should always receive the parent PDE UUID so their decompositions chain properly.
+
 #### Step 0c: Evaluate — Do genuine questions exist?
 Review the decomposition through structural thinking's four question types:
 - **Information questions**: What parts of the decomposition are vague or ambiguous?
